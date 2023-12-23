@@ -40,7 +40,7 @@ const Page: React.FC<Props> = (props) => {
           />
         )}
       </div>
-      <RenderBlocks layout={page.layout} />
+      {/* <RenderBlocks layout={page.layout} /> */}
       <footer className={classes.footer}>
         <hr />
         Next.js + Payload Server Boilerplate made by
@@ -59,29 +59,29 @@ const Page: React.FC<Props> = (props) => {
 
 export default Page;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const slug = ctx.params?.slug ? (ctx.params.slug as string[]).join('/') : 'home';
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   const slug = ctx.params?.slug ? (ctx.params.slug as string[]).join('/') : 'home';
 
-  const pageQuery = await payload.find({
-    collection: 'pages',
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  });
+//   const pageQuery = await payload.find({
+//     collection: 'pages',
+//     where: {
+//       slug: {
+//         equals: slug,
+//       },
+//     },
+//   });
 
-  if (!pageQuery.docs[0]) {
-    ctx.res.statusCode = 404;
+//   if (!pageQuery.docs[0]) {
+//     ctx.res.statusCode = 404;
 
-    return {
-      props: {},
-    };
-  }
+//     return {
+//       props: {},
+//     };
+//   }
 
-  return {
-    props: {
-      page: pageQuery.docs[0],
-    },
-  };
-};
+//   return {
+//     props: {
+//       page: pageQuery.docs[0],
+//     },
+//   };
+// };
