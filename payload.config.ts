@@ -6,6 +6,8 @@ import Product from './collections/Product';
 import Category from './collections/Category'
 import Dashboard from './views/Dashboard/Dashboard';
 import path from 'path'
+import OfferSection from './collections/OfferSection';
+import Slider from './collections/Slider';
 dotenv.config();
 
 export default buildConfig({
@@ -35,9 +37,11 @@ export default buildConfig({
   },
   collections: [
     Media,
+    Slider,
     Product,
     Category,
-    Page
+    Page,
+    OfferSection
   ],
   graphQL:{
     disable:true
