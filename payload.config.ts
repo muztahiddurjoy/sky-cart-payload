@@ -8,6 +8,7 @@ import Dashboard from './views/Dashboard/Dashboard';
 import path from 'path'
 import OfferSection from './collections/OfferSection';
 import Slider from './collections/Slider';
+import VariantCollection from './collections/Variant';
 dotenv.config();
 
 export default buildConfig({
@@ -41,7 +42,8 @@ export default buildConfig({
     Product,
     Category,
     Page,
-    OfferSection
+    OfferSection,
+    VariantCollection
   ],
   graphQL:{
     disable:true

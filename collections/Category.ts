@@ -2,6 +2,9 @@ import { CollectionConfig } from "payload/types";
 
 const Category:CollectionConfig ={
     slug:'categories',
+    admin:{
+        useAsTitle:'category_name'
+    },
     fields:[
         {
             type:'text',

@@ -1,3 +1,4 @@
+import payload from "payload";
 import { CollectionConfig } from "payload/types";
 
 const Product: CollectionConfig = {
@@ -39,10 +40,11 @@ const Product: CollectionConfig = {
             name:'category',
             label:'Category',
             relationTo:'categories',
+            hasMany:false,
+            maxDepth:10,
             admin:{
-                // components:{
-
-                // }
+                allowCreate:true,
+                isSortable:true
             },
             required:true
         },
