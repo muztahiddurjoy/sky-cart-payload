@@ -35,23 +35,16 @@ const Product: CollectionConfig = {
             label:'Image'
         },
         {
-            type:'select',
+            type:'relationship',
             name:'category',
             label:'Category',
-            options:[
-                {
-                    label:'Category 1',
-                    value:'category-1'
-                },
-                {
-                    label:'Category 2',
-                    value:'category-2'
-                },
-                {
-                    label:'Category 3',
-                    value:'category-3'
-                }
-            ]
+            relationTo:'categories',
+            admin:{
+                // components:{
+
+                // }
+            },
+            required:true
         },
         {
             type:'select',

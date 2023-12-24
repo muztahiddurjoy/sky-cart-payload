@@ -62,14 +62,14 @@ export default Page;
 // export const getServerSideProps: GetServerSideProps = async (ctx) => {
 //   const slug = ctx.params?.slug ? (ctx.params.slug as string[]).join('/') : 'home';
 
-//   const pageQuery = await payload.find({
-//     collection: 'pages',
-//     where: {
-//       slug: {
-//         equals: slug,
-//       },
-//     },
-//   });
+  // const pageQuery = await payload.find({
+  //   collection: 'pages',
+  //   where: {
+  //     slug: {
+  //       equals: slug,
+  //     },
+  //   },
+  // });
 
 //   if (!pageQuery.docs[0]) {
 //     ctx.res.statusCode = 404;

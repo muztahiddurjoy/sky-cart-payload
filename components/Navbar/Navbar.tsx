@@ -3,11 +3,11 @@ import React from 'react'
 
 const Navbar = ({categories}:{categories:Array<Category>}) => {
   return (
-    <div className="navbar bg-base-100 grid grid-cols-2 md:grid-cols-12">
+    <div className="navbar z-50 shadow-sm fixed top-0 left-0 right-0 bg-base-100 grid grid-cols-2 md:grid-cols-12">
       <a className="btn btn-ghost text-xl md:col-span-2">Sky Cart</a>
-    <ul className='md:col-span-10'>
+    <ul className='md:col-span-10 flex items-center justify-end'>
         {categories.map((v,i)=><li>
-            <Link href={`/category/${v.id}`}>{v.category_name}</Link>
+            <Link href={`/category/${v.id}`} className='text-sm font-semibold transition-colors ease-in-out hover:text-blue-500 uppercase mx-2'>{v.category_name}</Link>
         </li>)}
     </ul>
     
