@@ -12,7 +12,7 @@ const ProductCard = ({category,createdAt,description,discount,id,price,product_n
         {/* <button className='btn absolute top-2 right-2 btn-sm'>
             <Heart height={15}/>
         </button> */}
-    <figure><Image height={300} width={400} src={image[0].image.url} className='rounded-t-lg' alt={image[0].image.alt} /></figure>
+    <figure><Image height={300} width={400} src={typeof image[0].image!=="string"&&image[0].image.url} className='rounded-t-lg h-[200px] object-cover content-center' alt={typeof image[0].image!=="string"&&image[0].image.alt} /></figure>
     <div className="card-body">
         <div className="-mt-3">
         <h2 className="card-title text-lg">{product_name}</h2>
