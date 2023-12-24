@@ -2,6 +2,9 @@ import { CollectionConfig } from "payload/types";
 
 const Slider: CollectionConfig = {
     slug:'slider',
+    admin:{
+        useAsTitle:'title'
+    },
     fields:[
         {
             name:'title',

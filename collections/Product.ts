@@ -3,6 +3,9 @@ import { CollectionConfig } from "payload/types";
 
 const Product: CollectionConfig = {
     slug:'product',
+    admin:{
+        useAsTitle:'product_name'
+    },
     fields:[
         {
             type:"text",
@@ -33,7 +36,8 @@ const Product: CollectionConfig = {
             type:'upload',
             name:'image',
             relationTo:'media',
-            label:'Image'
+            label:'Image',
+            
         },
         {
             type:'relationship',
@@ -49,27 +53,16 @@ const Product: CollectionConfig = {
             required:true
         },
         {
-            type:'select',
+            type:'relationship',
             name:'variant',
             label:'Variant',
-            options:[
-                {
-                    label:'red',
-                    value:'red'
-                },
-                {
-                    label:'blue',
-                    value:'blue'
-                },
-                {
-                    label:'green',
-                    value:'green'
-                },
-                {
-                    label:'yellow',
-                    value:'yellow'
-                }
-            ]
+            relationTo:'variants'
+        },
+        {
+            type:'relationship',
+            name:'shade',
+            label:'Shade',
+            relationTo:'shades'
         }
     ]
 }
