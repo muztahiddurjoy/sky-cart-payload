@@ -10,10 +10,7 @@ import Head from 'next/head';
 // import Page, { getServerSideProps as sharedGetServerSideProps } from './[...slug]';
 
 const Homepage = ({categories,products})=>{
-  useEffect(() => {
-    console.log(categories)
-  }, [])
-  
+
   return <div>
     <Head>
       <title>Sky Cart</title>
@@ -37,7 +34,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const products = await payload.find({
     collection:'product'
   })
-  console.log(products.docs)
   // const func = sharedGetServerSideProps.bind(this);
   // return func(ctx);
   return {

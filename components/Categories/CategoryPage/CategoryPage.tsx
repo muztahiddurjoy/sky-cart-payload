@@ -3,6 +3,7 @@ import ProductCard from '../../Product/ProductCard/ProductCard'
 
 const CategoryPage = ({products}:{products:Array<Product>}) => {
   return (
+    <>
     <div className='grid grid-cols-4 md:px-20 px-5 mt-10'>
       {products.map((product,index)=> <ProductCard
       category={product.category}
@@ -18,6 +19,7 @@ const CategoryPage = ({products}:{products:Array<Product>}) => {
       variant={product.variant}
       key={index}/>)}
     </div>
+    </>
   )
 }
 

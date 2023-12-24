@@ -5,8 +5,10 @@ import payload from 'payload'
 import Footer from '../../components/Footer/Footer'
 import CategoryTop from '../../components/Categories/CategoryTpp/CategoryTop'
 import CategoryPage from '../../components/Categories/CategoryPage/CategoryPage'
+import { ArrowLeftCircle, ChevronLeft, ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 
-const Catagorized = ({categories,products,category}:{categories:Array<Category>,products:Array<Product>,category:Category}) => {
+const Catagorized = ({categories,products,category,hasNextPage,hasPrevPage,nextPage,prevPage,totalPage,page}:{categories:Array<Category>,products:Array<Product>,category:Category,nextPage:number|null,prevPage:number|null,hasNextPage:boolean,hasPrevPage:boolean,totalPage:number,page:number}) => {
   return (
     <div>
       <Navbar categories={categories}/>
@@ -16,16 +18,33 @@ const Catagorized = ({categories,products,category}:{categories:Array<Category>,
         id={category.id}
         updatedAt={category.updatedAt}/>
       <CategoryPage products={products}/>
+      <div className='flex items-center px-5 justify-center'>
+    <div className="join mb-5">
+      {hasPrevPage&&<Link href={`/category/${category.id}/?page=${prevPage}`}><button className="join-item btn-square btn btn-sm"><ChevronLeft height={15}/></button></Link>}
+      {Array(totalPage).fill(0).map((item, index) => (
+        <button className={`join-item btn-square btn btn-sm ${index+1==page&&'btn-primary'}`} key={index}>{index+1}</button>
+      ))}
+      
+      {/* <button className="join-item btn-square btn btn-sm">3</button>
+      <button className="join-item btn-square btn btn-sm">4</button> */}
+      {hasNextPage&&<Link href={`/category/${category.id}/?page=${nextPage}`}><button className="join-item btn-square btn btn-sm"><ChevronRight height={15}/></button></Link>}
+    </div>
+    </div>
       <Footer/>
     </div>
   )
 }
 
 export default Catagorized
+
+
+
+
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const slug = ctx.query.slug
   const products = await payload.find({
     collection:'product',
+    page:Number(ctx.query.page?ctx.query.page:1),
     where:{
       category:{
         equals:slug
@@ -45,7 +64,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           props: {
             categories:categories.docs?categories.docs : [],
             products:products.docs?products.docs : [],
-            category:category?category:{id:'',category_name:'',createdAt:'',updatedAt:''}
+            category:category?category:{id:'',category_name:'',createdAt:'',updatedAt:''},
+            page:products.page,
+            nextPage:products.nextPage,
+            prevPage:products.prevPage,
+            totalPage:products.totalPages,
+            hasNextPage:products.hasNextPage,
+            hasPrevPage:products.hasPrevPage
           },
   };
 };
