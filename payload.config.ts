@@ -6,10 +6,11 @@ import Product from './collections/Product';
 import Category from './collections/Category'
 import Dashboard from './views/Dashboard/Dashboard';
 import path from 'path'
-import OfferSection from './collections/OfferSection';
+// import OfferSection from './collections/OfferSection';
 import Slider from './collections/Slider';
 import VariantCollection from './collections/Variant';
 import Shades from './collections/Shade';
+import Offer from './global/OfferSection';
 dotenv.config();
 
 export default buildConfig({
@@ -37,13 +38,15 @@ export default buildConfig({
       }
     },
   },
+  globals:[
+    Offer
+  ],
   collections: [
     Media,
     Slider,
     Product,
     Category,
     Page,
-    OfferSection,
     VariantCollection,
     Shades
   ],

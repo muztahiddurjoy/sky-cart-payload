@@ -10,27 +10,32 @@ const Product: CollectionConfig = {
         {
             type:"text",
             name:'product_name',
-            label:'Product Name'
+            label:'Product Name',
+            required:true
         },
         {
             type:'number',
             name:'price',
-            label:'Price'
+            label:'Price',
+            required:true
         },
         {
             type:'number',
             name:'quantity',
-            label:'Quantity'
+            label:'Quantity',
+            required:true
         },
         {
             type:'number',
             name:'discount',
-            label:'Discount'
+            label:'Discount',
+            required:true
         },
         {
             type:'richText',
             name:'description',
-            label:'Description'
+            label:'Description',
+            required:true
         },
         {
             type:'array',
@@ -63,13 +68,15 @@ const Product: CollectionConfig = {
             type:'relationship',
             name:'variant',
             label:'Variant',
-            relationTo:'variants'
+            relationTo:'variants',
+            required:true
         },
         {
             type:'relationship',
             name:'shade',
             label:'Shade',
-            relationTo:'shades'
+            relationTo:'shades',
+            required:true
         }
     ]
 }

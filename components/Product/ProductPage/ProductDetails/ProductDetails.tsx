@@ -13,7 +13,6 @@ const ProductDetails = ({product}:{product:Product}) => {
         <div className="">
             <p className='pb-2 text-sm text-gray-500'>Category:</p><Link href={`/category/${product.category.id}`} className='my-5'><div className="badge badge-primary text-xs p-2 py-3 hover:bg-opacity-90">{product.category.category_name}</div></Link>
         </div>
-
     </div>
   )
 }

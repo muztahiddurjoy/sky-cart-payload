@@ -25,6 +25,13 @@ const Slider: CollectionConfig = {
             required:true
         },
         {
+            name:'img',
+            type:'upload',
+            relationTo:'media',
+            required:true,
+            label:'Image'
+        },
+        {
             name:'category',
             type:'relationship',
             relationTo:'categories',

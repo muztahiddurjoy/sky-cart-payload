@@ -7,21 +7,20 @@ import Footer from '../components/Footer/Footer';
 import payload from 'payload';
 import { useEffect } from 'react';
 import Head from 'next/head';
+import { Offer } from '../payload-types';
 // import Page, { getServerSideProps as sharedGetServerSideProps } from './[...slug]';
 
-const Homepage = ({categories,products})=>{
+const Homepage = ({categories,products,slides,offer})=>{
 
   return <div>
     <Head>
       <title>Sky Cart</title>
     </Head>
     <Navbar categories={categories}/>
-    {/* <TopCarousel/> */}
-    <div className="pt-10">
+    <TopCarousel slides={slides} />
+    <OfferCard color={offer.color} description={offer.description} image={offer.image.url} imageAlt={offer.image.alt} link={offer.link} linkText={offer.linkText} title={offer.title}/>
     <Featured products={products}/>
-    <OfferCard/>
     <Footer/>
-    </div>
   </div>
 }
 
@@ -35,12 +34,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     collection:'product',
     limit:8
   })
+  const slides = await payload.find({
+    collection:'slider'
+  })
+  const offer = await payload.findGlobal({
+    slug:'offer'
+  })
   // const func = sharedGetServerSideProps.bind(this);
   // return func(ctx);
   return {
           props: {
             categories:categories.docs?categories.docs : [],
-            products:products.docs?products.docs : []
+            products:products.docs?products.docs : [],
+            slides:slides.docs?slides.docs : [],
+            offer:offer?offer:{}
           },
   };
 };

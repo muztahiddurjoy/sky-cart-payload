@@ -12,12 +12,13 @@ export interface Config {
     product: Product;
     categories: Category;
     pages: Page;
-    offer: Offer;
     variants: Variant;
     shades: Shade;
     users: User;
   };
-  globals: {};
+  globals: {
+    offer: Offer;
+  };
 }
 export interface Media {
   id: string;
@@ -54,6 +55,7 @@ export interface Slider {
   title: string;
   description: string;
   buttonText: string;
+  img: string | Media;
   category: string | Category;
   updatedAt: string;
   createdAt: string;
@@ -66,20 +68,20 @@ export interface Category {
 }
 export interface Product {
   id: string;
-  product_name?: string;
-  price?: number;
-  quantity?: number;
-  discount?: number;
-  description?: {
+  product_name: string;
+  price: number;
+  quantity: number;
+  discount: number;
+  description: {
     [k: string]: unknown;
   }[];
   image: {
-    image?: Media;
+    image?: string | Media;
     id?: string;
   }[];
-  category: Category;
-  variant?:  Variant;
-  shade?: Shade;
+  category: string | Category;
+  variant: string | Variant;
+  shade: string | Shade;
   updatedAt: string;
   createdAt: string;
 }
@@ -144,17 +146,6 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
 }
-export interface Offer {
-  id: string;
-  title: string;
-  description: {
-    [k: string]: unknown;
-  }[];
-  buttonText: string;
-  category_name: string | Category;
-  updatedAt: string;
-  createdAt: string;
-}
 export interface User {
   id: string;
   updatedAt: string;
@@ -165,4 +156,13 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password?: string;
+}
+export interface Offer {
+  id: string;
+  title: string;
+  description: string;
+  color: string;
+  link: string;
+  linkText: string;
+  image: string | Media;
 }

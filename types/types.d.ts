@@ -1,9 +1,19 @@
-// type CarouselItem = {
-//     title:string,
-//     link:string,
-//     linkText:string,
-//     image:string
-// }
+type CarouselItem = {
+    title:string,
+    link:string,
+    linkText:string,
+    image:string,
+    description:string
+}
+type OfferType = {
+    title:string,
+    link:string,
+    linkText:string,
+    image:string,
+    description:string,
+    color:string,
+    imageAlt:string
+}
 // type Category ={
 //     category_name:string,
 //     createdAt:string ,
