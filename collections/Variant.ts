@@ -10,11 +10,6 @@ const VariantCollection:CollectionConfig = {
             type:'text',
             name:'color',
             label:'Color'
-        },
-        {
-            type:'text',
-            name:'Hex Code',
-            label:'Size'
         }
     ]
 }
