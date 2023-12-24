@@ -1,6 +1,7 @@
 import { Heart, ShoppingCart } from 'lucide-react'
 import React from 'react'
 import RichText from '../../RichText'
+import { Product } from '../../../payload-types'
 
 const ProductCard = ({category,createdAt,description,discount,id,price,product_name,quantity,shade,updatedAt,variant}:Product) => {
   return (
@@ -16,7 +17,7 @@ const ProductCard = ({category,createdAt,description,discount,id,price,product_n
         <p className='flex-1 text-right'>{price} BDT</p>
         </div>
         {/* <RichText content={description}/> */}
-        <p className="text-xs text-primary">{category.category_name}</p>
+        <p className="text-xs text-primary">{typeof category!=="string"&&category.category_name}</p>
         <div className="card-actions justify-end">
         <button className='btn btn-sm'><ShoppingCart className='mr-1' height={15}/>Buy Now</button>
         </div>

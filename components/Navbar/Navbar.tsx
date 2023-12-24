@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { Category } from '../../payload-types'
 
 const Navbar = ({categories}:{categories:Array<Category>}) => {
   return (

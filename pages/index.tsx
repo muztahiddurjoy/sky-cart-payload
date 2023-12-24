@@ -32,7 +32,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     collection:'categories',
   })
   const products = await payload.find({
-    collection:'product'
+    collection:'product',
+    limit:8
   })
   // const func = sharedGetServerSideProps.bind(this);
   // return func(ctx);

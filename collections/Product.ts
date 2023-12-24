@@ -33,10 +33,17 @@ const Product: CollectionConfig = {
             label:'Description'
         },
         {
-            type:'upload',
+            type:'array',
             name:'image',
-            relationTo:'media',
-            label:'Image',
+            fields:[
+                {
+                    name:'image',
+                    type:'upload',
+                    relationTo:'media'
+                }
+            ],
+            required:true,
+            label:'Images',
             
         },
         {

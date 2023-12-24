@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import { Category } from '../../../payload-types'
 
 const CategoryTop = ({category_name,createdAt,id,updatedAt}:Category) => {
   return (

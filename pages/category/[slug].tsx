@@ -7,6 +7,7 @@ import CategoryTop from '../../components/Categories/CategoryTpp/CategoryTop'
 import CategoryPage from '../../components/Categories/CategoryPage/CategoryPage'
 import { ArrowLeftCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
+import { Category, Product } from '../../payload-types'
 
 const Catagorized = ({categories,products,category,hasNextPage,hasPrevPage,nextPage,prevPage,totalPage,page}:{categories:Array<Category>,products:Array<Product>,category:Category,nextPage:number|null,prevPage:number|null,hasNextPage:boolean,hasPrevPage:boolean,totalPage:number,page:number}) => {
   return (
@@ -19,14 +20,11 @@ const Catagorized = ({categories,products,category,hasNextPage,hasPrevPage,nextP
         updatedAt={category.updatedAt}/>
       <CategoryPage products={products}/>
       <div className='flex items-center px-5 justify-center'>
-    <div className="join mb-5">
+    <div className="join my-5">
       {hasPrevPage&&<Link href={`/category/${category.id}/?page=${prevPage}`}><button className="join-item btn-square btn btn-sm"><ChevronLeft height={15}/></button></Link>}
       {Array(totalPage).fill(0).map((item, index) => (
         <button className={`join-item btn-square btn btn-sm ${index+1==page&&'btn-primary'}`} key={index}>{index+1}</button>
       ))}
-      
-      {/* <button className="join-item btn-square btn btn-sm">3</button>
-      <button className="join-item btn-square btn btn-sm">4</button> */}
       {hasNextPage&&<Link href={`/category/${category.id}/?page=${nextPage}`}><button className="join-item btn-square btn btn-sm"><ChevronRight height={15}/></button></Link>}
     </div>
     </div>
@@ -45,6 +43,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const products = await payload.find({
     collection:'product',
     page:Number(ctx.query.page?ctx.query.page:1),
+    limit:12,
     where:{
       category:{
         equals:slug

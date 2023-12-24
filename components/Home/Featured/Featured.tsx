@@ -1,12 +1,14 @@
 import React from 'react'
 import ProductCard from '../../Product/ProductCard/ProductCard'
+import { Product } from '../../../payload-types'
 
 const Featured = ({products}:{products:Array<Product>}) => {
   return (
     <div>
-          <p className='text-xl lg:text-3xl mt-10 text-center text-primary font-semibold'>All Products</p>
+          <p className='text-xl lg:text-3xl mt-10 text-center text-primary font-semibold'>New Arrival</p>
         <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-4 md:px-32 mt-10">
-          {products.map((v,i)=> <ProductCard 
+          {products.map((v,i)=> <ProductCard
+          image={v.image}
           category={v.category}
           createdAt={v.createdAt}
           description={v.description}
