@@ -78,8 +78,8 @@ export interface Product {
     id?: string;
   }[];
   category: Category;
-  variant?: string | Variant;
-  shade?: string | Shade;
+  variant?:  Variant;
+  shade?: Shade;
   updatedAt: string;
   createdAt: string;
 }
