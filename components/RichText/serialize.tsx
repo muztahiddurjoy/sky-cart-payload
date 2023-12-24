@@ -80,61 +80,61 @@ const serialize = (children: Children): React.ReactElement[] => children.map((no
   switch (node.type) {
     case 'h1':
       return (
-        <h1 key={i}>
+        <h1 className='text-3xl font-extrabold' key={i}>
           {serialize(node.children)}
         </h1>
       );
     case 'h2':
       return (
-        <h2 key={i}>
+        <h2 className='text-2xl font-bold' key={i}>
           {serialize(node.children)}
         </h2>
       );
     case 'h3':
       return (
-        <h3 key={i}>
+        <h3 className='text-xl font-semibold' key={i}>
           {serialize(node.children)}
         </h3>
       );
     case 'h4':
       return (
-        <h4 key={i}>
+        <h4 className='text-xl font-medium' key={i}>
           {serialize(node.children)}
         </h4>
       );
     case 'h5':
       return (
-        <h5 key={i}>
+        <h5 className='text-lg font-medium' key={i}>
           {serialize(node.children)}
         </h5>
       );
     case 'h6':
       return (
-        <h6 key={i}>
+        <h6 className='font-normal' key={i}>
           {serialize(node.children)}
         </h6>
       );
     case 'quote':
       return (
-        <blockquote key={i}>
+        <blockquote className='quote text-gray-600' key={i}>
           {serialize(node.children)}
         </blockquote>
       );
     case 'ul':
       return (
-        <ul key={i}>
+        <ul className='list-disc pl-5' key={i}>
           {serialize(node.children)}
         </ul>
       );
     case 'ol':
       return (
-        <ol key={i}>
+        <ol className='list-decimal pl-5' key={i}>
           {serialize(node.children)}
         </ol>
       );
     case 'li':
       return (
-        <li key={i}>
+        <li className='list-item text-gray-600' key={i}>
           {serialize(node.children)}
         </li>
       );
@@ -150,7 +150,7 @@ const serialize = (children: Children): React.ReactElement[] => children.map((no
 
     default:
       return (
-        <p key={i}>
+        <p className='' key={i}>
           {serialize(node.children)}
         </p>
       );

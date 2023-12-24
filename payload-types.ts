@@ -74,10 +74,10 @@ export interface Product {
     [k: string]: unknown;
   }[];
   image: {
-    image?: string | Media;
+    image?: Media;
     id?: string;
   }[];
-  category: string | Category;
+  category: Category;
   variant?: string | Variant;
   shade?: string | Shade;
   updatedAt: string;
