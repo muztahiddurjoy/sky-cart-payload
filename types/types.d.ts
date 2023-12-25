@@ -1,3 +1,5 @@
+import { Category } from "../payload-types"
+
 type CarouselItem = {
     title:string,
     link:string,
@@ -14,6 +16,15 @@ type OfferType = {
     color:string,
     imageAlt:string
 }
+type Footer = {
+    facebook: string,
+    instagram: string,
+    whatsapp: string,
+    phone: string,
+    email: string,
+    address: string,
+    categories:Array<Category>
+  }
 // type Category ={
 //     category_name:string,
 //     createdAt:string ,

@@ -7,9 +7,10 @@ import CategoryTop from '../../components/Categories/CategoryTpp/CategoryTop'
 import CategoryPage from '../../components/Categories/CategoryPage/CategoryPage'
 import { ArrowLeftCircle, ChevronLeft, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
-import { Category, Product } from '../../payload-types'
+import { Category, Product, Social } from '../../payload-types'
+import { Footer as FooterType } from '../../types/types'
 
-const Catagorized = ({categories,products,category,hasNextPage,hasPrevPage,nextPage,prevPage,totalPage,page}:{categories:Array<Category>,products:Array<Product>,category:Category,nextPage:number|null,prevPage:number|null,hasNextPage:boolean,hasPrevPage:boolean,totalPage:number,page:number}) => {
+const Catagorized = ({categories,products,category,hasNextPage,hasPrevPage,nextPage,prevPage,totalPage,page,social}:{categories:Array<Category>,products:Array<Product>,category:Category,nextPage:number|null,prevPage:number|null,hasNextPage:boolean,hasPrevPage:boolean,totalPage:number,page:number,social:FooterType}) => {
   return (
     <div>
       <Navbar categories={categories}/>
@@ -28,7 +29,14 @@ const Catagorized = ({categories,products,category,hasNextPage,hasPrevPage,nextP
       {hasNextPage&&<Link href={`/category/${category.id}/?page=${nextPage}`}><button className="join-item btn-square btn btn-sm"><ChevronRight height={15}/></button></Link>}
     </div>
     </div>
-      <Footer/>
+      <Footer address={social.address} 
+      categories={categories}
+      email={social.email}
+      facebook={social.facebook}
+      instagram={social.instagram}
+      phone={social.phone}
+      whatsapp={social.whatsapp}
+      />
     </div>
   )
 }
@@ -58,7 +66,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     id:String(slug)
   })
   // const func = sharedGetServerSideProps.bind(this);
-  // return func(ctx);
+  // return func(ctx)
+  const social = await payload.findGlobal({
+    slug:'social'
+  });
   return {
           props: {
             categories:categories.docs?categories.docs : [],
@@ -69,7 +80,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             prevPage:products.prevPage,
             totalPage:products.totalPages,
             hasNextPage:products.hasNextPage,
-            hasPrevPage:products.hasPrevPage
+            hasPrevPage:products.hasPrevPage,
+            social:social?social:{}
           },
   };
 };

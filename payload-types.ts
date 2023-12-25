@@ -7,18 +7,60 @@
 
 export interface Config {
   collections: {
+    sales: Sale;
     media: Media;
     slider: Slider;
     product: Product;
     categories: Category;
-    pages: Page;
+    customer: Customer;
     variants: Variant;
     shades: Shade;
     users: User;
   };
   globals: {
+    social: Social;
     offer: Offer;
   };
+}
+export interface Sale {
+  id: string;
+  customer: string | Customer;
+  gross_sale: number;
+  net_sale: number;
+  discount: number;
+  products_sales: {
+    product?: string | Product;
+    id?: string;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Customer {
+  id: string;
+  customer_name: string;
+  email?: string;
+  phone: string;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Product {
+  id: string;
+  product_name: string;
+  price: number;
+  quantity: number;
+  discount: number;
+  description: {
+    [k: string]: unknown;
+  }[];
+  image: {
+    image?: string | Media;
+    id?: string;
+  }[];
+  category: string | Category;
+  variant: string | Variant;
+  shade: string | Shade;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Media {
   id: string;
@@ -50,38 +92,9 @@ export interface Media {
     };
   };
 }
-export interface Slider {
-  id: string;
-  title: string;
-  description: string;
-  buttonText: string;
-  img: string | Media;
-  category: string | Category;
-  updatedAt: string;
-  createdAt: string;
-}
 export interface Category {
   id: string;
   category_name?: string;
-  updatedAt: string;
-  createdAt: string;
-}
-export interface Product {
-  id: string;
-  product_name: string;
-  price: number;
-  quantity: number;
-  discount: number;
-  description: {
-    [k: string]: unknown;
-  }[];
-  image: {
-    image?: string | Media;
-    id?: string;
-  }[];
-  category: string | Category;
-  variant: string | Variant;
-  shade: string | Shade;
   updatedAt: string;
   createdAt: string;
 }
@@ -97,52 +110,13 @@ export interface Shade {
   updatedAt: string;
   createdAt: string;
 }
-export interface Page {
+export interface Slider {
   id: string;
   title: string;
-  image?: string | Media;
-  layout?: (
-    | {
-        content?: {
-          [k: string]: unknown;
-        }[];
-        buttons: {
-          label: string;
-          type: 'page' | 'custom';
-          page: string | Page;
-          url: string;
-          newTab: boolean;
-          id?: string;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'cta';
-      }
-    | {
-        content?: {
-          [k: string]: unknown;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'content';
-      }
-    | {
-        image: string | Media;
-        type?: 'normal' | 'fullscreen' | 'wide';
-        caption?: {
-          [k: string]: unknown;
-        }[];
-        id?: string;
-        blockName?: string;
-        blockType: 'image';
-      }
-  )[];
-  meta?: {
-    title?: string;
-    description?: string;
-    keywords?: string;
-  };
-  slug?: string;
+  description: string;
+  buttonText: string;
+  img: string | Media;
+  category: string | Category;
   updatedAt: string;
   createdAt: string;
 }
@@ -156,6 +130,15 @@ export interface User {
   loginAttempts?: number;
   lockUntil?: string;
   password?: string;
+}
+export interface Social {
+  id: string;
+  facebook: string;
+  instagram: string;
+  whatsapp: string;
+  phone: string;
+  email: string;
+  address: string;
 }
 export interface Offer {
   id: string;

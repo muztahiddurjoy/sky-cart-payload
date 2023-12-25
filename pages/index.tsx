@@ -10,7 +10,7 @@ import Head from 'next/head';
 import { Offer } from '../payload-types';
 // import Page, { getServerSideProps as sharedGetServerSideProps } from './[...slug]';
 
-const Homepage = ({categories,products,slides,offer})=>{
+const Homepage = ({categories,products,slides,offer,social})=>{
 
   return <div>
     <Head>
@@ -20,7 +20,7 @@ const Homepage = ({categories,products,slides,offer})=>{
     <TopCarousel slides={slides} />
     <OfferCard color={offer.color} description={offer.description} image={offer.image.url} imageAlt={offer.image.alt} link={offer.link} linkText={offer.linkText} title={offer.title}/>
     <Featured products={products}/>
-    <Footer/>
+    <Footer categories={categories} address={social.address} email={social.email} facebook={social.facebook} instagram={social.instagram} phone={social.phone} whatsapp={social.whatsapp} />
   </div>
 }
 
@@ -40,6 +40,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const offer = await payload.findGlobal({
     slug:'offer'
   })
+  const social = await payload.findGlobal({
+    slug:'social'
+  })
   // const func = sharedGetServerSideProps.bind(this);
   // return func(ctx);
   return {
@@ -47,7 +50,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             categories:categories.docs?categories.docs : [],
             products:products.docs?products.docs : [],
             slides:slides.docs?slides.docs : [],
-            offer:offer?offer:{}
+            offer:offer?offer:{},
+            social:social?social:{}
           },
   };
 };
