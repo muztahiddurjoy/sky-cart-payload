@@ -24,7 +24,9 @@ const Catagorized = ({categories,products,category,hasNextPage,hasPrevPage,nextP
     <div className="join my-5">
       {hasPrevPage&&<Link href={`/category/${category.id}/?page=${prevPage}`}><button className="join-item btn-square btn btn-sm"><ChevronLeft height={15}/></button></Link>}
       {Array(totalPage).fill(0).map((item, index) => (
-        <button className={`join-item btn-square btn btn-sm ${index+1==page&&'btn-primary'}`} key={index}>{index+1}</button>
+        <Link href={`/category/${category.id}/?page=${index+1}`}>
+           <button className={`join-item btn-square btn btn-sm ${index+1==page&&'btn-primary'}`} key={index}>{index+1}</button>
+        </Link>
       ))}
       {hasNextPage&&<Link href={`/category/${category.id}/?page=${nextPage}`}><button className="join-item btn-square btn btn-sm"><ChevronRight height={15}/></button></Link>}
     </div>
