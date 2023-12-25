@@ -11,6 +11,9 @@ import Slider from './collections/Slider';
 import VariantCollection from './collections/Variant';
 import Shades from './collections/Shade';
 import Offer from './global/OfferSection';
+import Customer from './collections/Customer';
+import Sales from './collections/Sales';
+import Social from './global/Socials';
 dotenv.config();
 
 export default buildConfig({
@@ -39,14 +42,16 @@ export default buildConfig({
     },
   },
   globals:[
+    Social,
     Offer
   ],
   collections: [
+    Sales,
     Media,
     Slider,
     Product,
     Category,
-    Page,
+    Customer,
     VariantCollection,
     Shades
   ],
