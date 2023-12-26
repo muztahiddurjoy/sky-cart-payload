@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CarouselItem } from '../../../../types/types'
 const CarouselSlide = ({image,link,linkText,title,description}:CarouselItem) => {
   return (
     <div className='min-h-[70vh] pt-10 relative w-full bg-black'>

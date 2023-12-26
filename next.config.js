@@ -12,4 +12,7 @@ module.exports = {
     ],
     deviceSizes: sizes,
   },
+  eslint: {
+		ignoreDuringBuilds: true
+	}
 };

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { OfferType } from '../../../types/types'
 
 const OfferCard = ({color,description,image,link,linkText,title,imageAlt}:OfferType) => {
   return (

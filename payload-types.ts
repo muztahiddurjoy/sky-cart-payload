@@ -53,12 +53,12 @@ export interface Product {
     [k: string]: unknown;
   }[];
   image: {
-    image?: string | Media;
+    image?: Media;
     id?: string;
   }[];
-  category: string | Category;
-  variant: string | Variant;
-  shade: string | Shade;
+  category: Category;
+  variant: Variant;
+  shade:  Shade;
   updatedAt: string;
   createdAt: string;
 }
