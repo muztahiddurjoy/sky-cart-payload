@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",
+    "axios": "^1.6.3",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.0.0",
     "escape-html": "^1.0.3",

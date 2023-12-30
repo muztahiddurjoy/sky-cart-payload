@@ -9,7 +9,17 @@ dotenv();
 
 const dev = process.env.NODE_ENV !== 'production';
 const server = express();
-
+// server.get('/random',async (req,res)=>{
+//   const products = await payload.find({
+//     collection:'product',
+//     where:{
+//       quantity:{
+//         less_than:3
+//       }
+//     }
+//   })
+//   res.status(200).json({products})
+// })
 const start = async () => {
   await payload.init({
     secret: process.env.PAYLOAD_SECRET,

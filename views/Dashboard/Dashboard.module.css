@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two columns with equal width */
     gap: 20px; /* Adjust the gap between columns */
+    height: 100%;
 }
 .card{
     padding: 20px;

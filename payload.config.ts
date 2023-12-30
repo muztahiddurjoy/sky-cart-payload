@@ -32,7 +32,8 @@ export default buildConfig({
         Logo:Logo
       },
       views:{
-        Dashboard:Dashboard
+        Dashboard:Dashboard,
+        
       }
     },
     webpack: (config) => {
