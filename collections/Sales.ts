@@ -1,8 +1,34 @@
-import { AfterChangeHook } from "payload/dist/collections/config/types";
-import { CollectionConfig } from "payload/types";
+
+import payload from "payload";
+import { CollectionConfig,CollectionAfterChangeHook } from "payload/types";
+import { Sale } from "../payload-types";
 
 // const saleEffect:AfterChangeHook = ({})
-
+const afterChangeHook:CollectionAfterChangeHook = async ({
+doc,
+operation,
+previousDoc,
+req
+}) =>{
+    if(operation=="create"){
+        if(Array.isArray(doc.products_sales)){
+            doc.products_sales.map(async (v)=>{
+                // v.products_sales.map((v,i)=> v.id)
+                const product = await payload.findByID({
+                    collection:'product',
+                    id:v.product
+                })
+                payload.update({
+                    collection:'product',
+                    id:v.product,
+                    data:{quantity:Number(Number(product.quantity)-Number(doc.gross_sale))}
+                })
+            })
+        }
+    }
+    return doc
+}
+ 
 const Sales:CollectionConfig = {
     slug:'sales',
     // admin:{
@@ -47,7 +73,10 @@ const Sales:CollectionConfig = {
                 }
             ]
         }
-    ]
+    ],
+    hooks:{
+        afterChange:[afterChangeHook]
+    }
 }
 
 export default Sales

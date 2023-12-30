@@ -14,13 +14,23 @@ import Offer from './global/OfferSection';
 import Customer from './collections/Customer';
 import Sales from './collections/Sales';
 import Social from './global/Socials';
+import { Logo } from './views/Logo';
 dotenv.config();
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin:{
     // css: path.resolve(__dirname, './css/compiledTailwind.css'),
+    meta:{
+      titleSuffix: '- SkyCart',
+      favicon: '/logo/favicon.ico',
+      ogImage: '/logo/logo.png',
+    },
     components:{
+      graphics:{
+        Icon:Logo,
+        Logo:Logo
+      },
       views:{
         Dashboard:Dashboard
       }
