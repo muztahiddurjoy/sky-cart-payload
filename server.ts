@@ -38,7 +38,7 @@ const start = async () => {
       console.log('Next.js started');
 
       server.listen(449, async () => {
-        console.log(`Server listening on ${process.env.PORT}...`);
+        console.log(`Server listening on 449...`);
       });
     });
   } else {
