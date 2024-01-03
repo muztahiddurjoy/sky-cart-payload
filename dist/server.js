@@ -76,16 +76,16 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                     server.get('*', function (req, res) { return nextHandler_1(req, res); });
                     nextApp.prepare().then(function () {
                         console.log('Next.js started');
-                        server.listen(449, function () { return __awaiter(void 0, void 0, void 0, function () {
+                        server.listen(443, function () { return __awaiter(void 0, void 0, void 0, function () {
                             return __generator(this, function (_a) {
-                                console.log("Server listening on 449...");
+                                console.log("Server listening on 443...");
                                 return [2 /*return*/];
                             });
                         }); });
                     });
                 }
                 else {
-                    server.listen(449, function () { return __awaiter(void 0, void 0, void 0, function () {
+                    server.listen(443, function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:

@@ -37,12 +37,12 @@ const start = async () => {
     nextApp.prepare().then(() => {
       console.log('Next.js started');
 
-      server.listen(449, async () => {
-        console.log(`Server listening on 449...`);
+      server.listen(443, async () => {
+        console.log(`Server listening on 443...`);
       });
     });
   } else {
-    server.listen(449, async () => {
+    server.listen(443, async () => {
       console.log('Next.js is now building...');
       await nextBuild(path.join(__dirname, '../'));
       process.exit();
