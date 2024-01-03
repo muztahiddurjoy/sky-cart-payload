@@ -1,0 +1,8 @@
+.container{
+    background-color: #535353;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
