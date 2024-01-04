@@ -1,2 +1,2 @@
-const apiurl = "http://localhost:80"
+const apiurl = "https://sky-cart.com"
 export default apiurl
