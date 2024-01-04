@@ -78,10 +78,14 @@ var Dashboard_module_css_1 = __importDefault(require("./Dashboard.module.css"));
 var ProductCard_1 = __importDefault(require("./ProductCard/ProductCard"));
 var axios_1 = __importDefault(require("axios"));
 var apiurl_1 = __importDefault(require("../../apiurl"));
+var LastCustomer_1 = __importDefault(require("./LastCustomer/LastCustomer"));
+var LastSales_1 = __importDefault(require("./LastSales/LastSales"));
 var Dashboard = function (props) {
     var _a = (0, react_1.useState)(0), monthSale = _a[0], setmonthSale = _a[1];
     var _b = (0, react_1.useState)(0), weekSale = _b[0], setweekSale = _b[1];
     var _c = (0, react_1.useState)([]), products = _c[0], setproducts = _c[1];
+    var _d = (0, react_1.useState)([]), sales = _d[0], setsales = _d[1];
+    var _e = (0, react_1.useState)([]), customers = _e[0], setcustomers = _e[1];
     (0, react_1.useEffect)(function () {
         (0, axios_1.default)("".concat(apiurl_1.default, "/api/product")).then(function (res) {
             if (res.status == 200) {
@@ -110,6 +114,19 @@ var Dashboard = function (props) {
                     var today = new Date();
                     if (((today.getTime() - tempDate.getTime()) / (1000 * 60 * 60 * 24 * 30)) < 1) {
                         setmonthSale(function (p) { return p + 1; });
+                        setsales(function (p) { return i < 5 ? __spreadArray(__spreadArray([], p, true), [v], false) : __spreadArray([], p, true); });
+                    }
+                });
+            }
+        });
+        (0, axios_1.default)("".concat(apiurl_1.default, "/api/customer")).then(function (res) {
+            if (res.status == 200) {
+                res.data.docs.map(function (v, i) {
+                    var tempDate = new Date(v.createdAt);
+                    var today = new Date();
+                    if (((today.getTime() - tempDate.getTime()) / (1000 * 60 * 60 * 24 * 30)) < 1) {
+                        setmonthSale(function (p) { return p + 1; });
+                        setcustomers(function (p) { return i < 5 ? __spreadArray(__spreadArray([], p, true), [v], false) : __spreadArray([], p, true); });
                     }
                 });
             }
@@ -127,7 +144,10 @@ var Dashboard = function (props) {
                     react_1.default.createElement("div", { className: "" },
                         react_1.default.createElement("div", { className: Dashboard_module_css_1.default.card },
                             react_1.default.createElement("p", { style: { fontSize: 50, fontWeight: 700 } }, monthSale),
-                            react_1.default.createElement("p", { style: { marginTop: 5 } }, "Sales Last 1 Month")))),
+                            react_1.default.createElement("p", { style: { marginTop: 5 } }, "Sales Last 1 Month"))),
+                    react_1.default.createElement("div", { className: Dashboard_module_css_1.default.colspan2 }, react_1.default.createElement(LastSales_1.default, { sales: sales })),
+                    react_1.default.createElement("div", { className: Dashboard_module_css_1.default.colspan2 },
+                        react_1.default.createElement(LastCustomer_1.default, { customers: customers }))),
                 react_1.default.createElement("div", { className: "" },
                     react_1.default.createElement("h4", null, "Low Stock Products"),
                     products.map(function (v, i) { return react_1.default.createElement(ProductCard_1.default, { image: v.image[0].image.url, link: v.id, stock: v.quantity, title: v.product_name, key: i }); }))),

@@ -27,7 +27,7 @@ var Product = {
         {
             type: 'number',
             name: 'discount',
-            label: 'Discount',
+            label: 'Price After Discount',
             required: true
         },
         {

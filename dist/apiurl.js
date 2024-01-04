@@ -1,4 +1,4 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var apiurl = "http://localhost:3000";
+var apiurl = "https://sky-cart.com";
 exports.default = apiurl;
