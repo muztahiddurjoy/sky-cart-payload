@@ -1,2 +1,2 @@
-const apiurl = "http://localhost:3000"
+const apiurl = "http://localhost:80"
 export default apiurl

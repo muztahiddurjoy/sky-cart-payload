@@ -8,9 +8,11 @@ module.exports = {
   images: {
     domains: [
       'localhost',
+      'sky-cart.com'
       // Your domain(s) here
     ],
     deviceSizes: sizes,
+    disableStaticImages: true,
   },
   eslint: {
 		ignoreDuringBuilds: true

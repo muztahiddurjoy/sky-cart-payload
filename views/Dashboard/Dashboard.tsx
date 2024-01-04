@@ -3,13 +3,17 @@ import {Eyebrow, Gutter,Button,Card,Nav} from "payload/components/elements"
 import { GetServerSideProps } from 'next';
 import styles from  './Dashboard.module.css'
 import ProductCard from './ProductCard/ProductCard';
-import { Product, Sale } from '../../payload-types';
+import { Customer, Product, Sale } from '../../payload-types';
 import axios from 'axios';
 import apiurl from '../../apiurl';
+import LastCustomer from './LastCustomer/LastCustomer';
+import LastSales from './LastSales/LastSales'
 const Dashboard = (props) => {
   const [monthSale, setmonthSale] = useState(0)
   const [weekSale, setweekSale] = useState(0)
   const [products, setproducts] = useState<Array<Product>>([])
+  const [sales, setsales] = useState<Array<Sale>>([])
+  const [customers, setcustomers] = useState<Array<Customer>>([])
   useEffect(() => {
     axios(`${apiurl}/api/product`).then((res)=>{
       if(res.status==200){
@@ -39,11 +43,23 @@ const Dashboard = (props) => {
           const today = new Date()
           if(((today.getTime()-tempDate.getTime())/(1000*60*60*24*30))<1){
             setmonthSale(p=> p+1)
+            setsales((p)=> i<5?[...p,v]:[...p])
           }
         })
       }
     })
-    
+    axios(`${apiurl}/api/customer`).then((res)=>{
+      if(res.status==200){
+        res.data.docs.map((v:Customer,i)=>{
+          const tempDate = new Date(v.createdAt)
+          const today = new Date()
+          if(((today.getTime()-tempDate.getTime())/(1000*60*60*24*30))<1){
+            setmonthSale(p=> p+1)
+            setcustomers(p=> i<5?[...p,v]:[...p])
+          }
+        })
+      }
+    })
   }, [])
   
   return (
@@ -63,6 +79,12 @@ const Dashboard = (props) => {
               <p style={{fontSize:50,fontWeight:700}}>{monthSale}</p>
               <p style={{marginTop:5}}>Sales Last 1 Month</p>
             </div>
+          </div>
+          <div className={styles.colspan2}>
+            {<LastSales sales={sales}/>}
+          </div>
+          <div className={styles.colspan2}>
+            <LastCustomer customers={customers}/>
           </div>
           
           

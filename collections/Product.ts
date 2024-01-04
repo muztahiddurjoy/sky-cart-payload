@@ -28,7 +28,7 @@ const Product: CollectionConfig = {
         {
             type:'number',
             name:'discount',
-            label:'Discount',
+            label:'Price After Discount',
             required:true
         },
         {

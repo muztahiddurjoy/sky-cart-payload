@@ -24,7 +24,7 @@ export interface Config {
 }
 export interface Sale {
   id: string;
-  customer: string | Customer;
+  customer: Customer;
   gross_sale: number;
   net_sale: number;
   discount: number;
